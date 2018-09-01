@@ -1,0 +1,28 @@
+{
+  "name": "aqjy",
+  "version": "0.0.1",
+  "description": "Cheater for aqjy",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "Nogeek",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^1.5.1",
+    "lodash": "^4.17.10",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
+    "react-highlight-updates": "^1.0.0"
+  }
+}
