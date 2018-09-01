@@ -9,6 +9,11 @@ const _ = require('lodash');
 const tk = require('./res.json');
 
 class ResultList extends Component {
+  shouldCompomentUpdate(nextProps) {
+    const { update } = nextProps;
+    return update;
+  }
+
   render() {
     const { results } = this.props;
     const listItems = results.map((re, index) => <ListItem key={re.toString()}>
@@ -31,19 +36,28 @@ class App extends Component {
     this.state = {
       text: '',
       res: [],
+      update: false,
     };
   }
 
   _findKeyword() {
     this.setState({
-      res: _.filter(tk, (t) => t.indexOf(this.state.text) !== -1),
+      res: _.filter(tk, (t) => t.indexOf(this.state.text) !== -1).slice(0, 10),
+      update: true,
     });
   }
 
   _textChange(e) {
     this.setState({
       text: e.target.value,
+      update: false,
     });
+  }
+
+  _keyDown(e) {
+    if (e.key === 'Enter') {
+      this._findKeyword();
+    }
   }
 
   render() {
@@ -56,7 +70,8 @@ class App extends Component {
           <TextField
             id="text"
             label="Keyword"
-            onChange={this._textChange.bind(this)}/>
+            onChange={this._textChange.bind(this)}
+            onKeyDown={this._keyDown.bind(this)} />
           <Button
             variant="contained"
             color="primary"
