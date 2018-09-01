@@ -1,14 +1,16 @@
 {
   "name": "aqjy",
   "version": "0.0.1",
-  "description": "Cheater for aqjy",
+  "description": "Lookup tool for aqjy",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "parse": "node utils/parse.js"
+    "parse": "node utils/parse.js",
+    "deploy": "node netlify.js",
+    "deploy:draft": "node netlify.js --draft"
   },
   "author": "Nogeek",
   "license": "MIT",
@@ -24,6 +26,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
+    "netlify": "^1.2.0",
     "react-highlight-updates": "^1.0.0"
   }
 }

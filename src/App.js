@@ -37,13 +37,17 @@ class App extends Component {
       text: '',
       res: [],
       update: false,
+      more: false,
     };
   }
 
   _findKeyword() {
+    const findres = _.filter(tk, (t) => t.indexOf(this.state.text) !== -1);
+    const more = findres.length > 10;
     this.setState({
-      res: _.filter(tk, (t) => t.indexOf(this.state.text) !== -1).slice(0, 10),
+      res: findres.slice(0, 10),
       update: true,
+      more,
     });
   }
 
@@ -58,6 +62,15 @@ class App extends Component {
     if (e.key === 'Enter') {
       this._findKeyword();
     }
+  }
+
+  _loadMore() {
+    const findres = _.filter(tk, (t) => t.indexOf(this.state.text) !== -1);
+    this.setState({
+      res: findres,
+      update: true,
+      more: false,
+    });
   }
 
   render() {
@@ -76,6 +89,11 @@ class App extends Component {
             variant="contained"
             color="primary"
             onClick={this._findKeyword.bind(this)}>Find</Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this._loadMore.bind(this)}
+            disabled={!this.state.more}>More</Button>
         </div>
         <div>
           <ResultList
